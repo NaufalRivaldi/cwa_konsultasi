@@ -8,6 +8,18 @@
 	justify-content: center;
 }
 
+.max-height{
+	height: 100vh;
+}
+
+.kotak{
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 /*artikel*/
 #artikel > .container > .animate > .row > h2{
 	margin: auto;
@@ -88,4 +100,51 @@
 
 .text-footer{
 	padding-top: 2%;
+}
+
+.artikel-mobile{
+	display: none;
+}
+
+.artikel-web{
+	display: block;
+}
+
+/*tablet*/
+@media (max-width: 768px) {
+	/*global*/
+	h2{
+		font-size: 1.7em;
+	}
+
+	h3{
+		font-size: 1.4em;
+	}
+
+	/*jumbotron*/
+	.display-4{
+		font-size: 2.3em;
+	}
+
+	.lead{
+		font-size: 1em;
+	}
+}
+
+@media (max-width: 576px) {
+	h2{
+		font-size: 1.3em;
+	}
+
+	h3{
+		font-size: 1em;
+	}
+
+	.artikel-mobile{
+		display: block;
+	}
+
+	.artikel-web{
+		display: none;
+	}
 }

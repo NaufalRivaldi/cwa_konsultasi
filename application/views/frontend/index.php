@@ -1,28 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="home">
   <head>
     <?php $this->load->view('frontend/_page/head') ?>
   </head>
   <body>
   	<!-- navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-	  <div class="container">
-	  	<a class="navbar-brand" href="#"><?= APP_NAME ?></a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		    <div class="navbar-nav">
-		      <a class="nav-item nav-link active" href="#">Beranda <span class="sr-only">(current)</span></a>
-		      <a class="nav-item nav-link" href="#">Artikel</a>
-		      <a class="nav-item nav-link" href="#">Konsultasi</a>
-		    </div>
-		    <div class="navbar-nav ml-auto">
-		      <a class="nav-item nav-link" href="#">Kembali ke Website <i class="fa fa-money-check"></i><span class="sr-only">(current)</span></a>
-		    </div>
-		  </div>
-	  </div>
-	</nav>
+    <?php $this->load->view('frontend/_page/navbar') ?>
 	<!-- navbar -->
 	
 	<!-- jumbtron -->
@@ -38,7 +21,7 @@
 	<!-- artikel -->
 	<section id="artikel">
 		<div class="container">
-			<div class="animate hidden">
+			<div class="animate hidden artikel-web">
 				<div class="row">
 					<h2>ARTIKEL KEMUDAHAN WARNA RUMAH</h2>
 				</div>
@@ -73,6 +56,43 @@
 					</div>
 				</div>
 			</div>
+			<div class="animate artikel-mobile">
+				<div class="row">
+					<h2>ARTIKEL KEMUDAHAN WARNA RUMAH</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-4" style="margin-bottom: 5%">
+						<div class="card">
+						  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
+						  <div class="card-body">
+						    <h5 class="card-title">Card title</h5>
+						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    <a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-4" style="margin-bottom: 5%">
+						<div class="card">
+						  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
+						  <div class="card-body">
+						    <h5 class="card-title">Card title</h5>
+						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    <a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+					</div>
+					<div class="col-md-4" style="margin-bottom: 5%">
+						<div class="card">
+						  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
+						  <div class="card-body">
+						    <h5 class="card-title">Card title</h5>
+						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						    <a href="#" class="btn btn-primary">Go somewhere</a>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<!-- artikel -->
@@ -85,7 +105,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6 d-flex justify-content-center">
-					<a href="#" class="center">
+					<a href="<?= site_url('home/konsultasi') ?>" class="center">
 						<img src="<?= base_url('assets/img/konsultasi.png') ?>" width="60%">
 						<h3>Konsultasi Pemilihan Warna</h3>
 					</a>
@@ -102,15 +122,7 @@
 	<!-- konsultasi -->
 
 	<!-- footer -->
-	<section id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md">
-					<p class="text-footer">&copy; Naufal Rivaldi - 2018</p>	
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php $this->load->view('frontend/_page/footer') ?>
 	<!-- footer -->
 
     <!-- Optional JavaScript -->

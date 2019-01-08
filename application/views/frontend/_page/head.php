@@ -8,4 +8,4 @@
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css') ?>">
 <link rel="icon" href="<?= base_url('assets/img/logo/logo.png') ?>">
 
-<title><?= APP_NAME ?></title>
+<title><?= $this->uri->segment(2)." ".APP_NAME ?></title>
