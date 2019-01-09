@@ -15,6 +15,13 @@ class Nuansa extends CI_Controller {
 		$this->load->view('backend/nuansa/list', $data);
 	}
 
+	public function setColor($id){
+		
+		
+		$data['nuansa'] = $this->nuansa_model->getById($id);
+		$this->load->view('backend/nuansa/color', $data);
+	}
+
 	public function add(){
 		$nuansa = $this->nuansa_model;
 		$validation = $this->form_validation;
@@ -22,10 +29,37 @@ class Nuansa extends CI_Controller {
 
 		if($validation->run()){
 			$nuansa->save();
+			$this->session->set_flashdata('success', 'Data berhasil ditambahkan.');
 			redirect('backend/nuansa');
-			// $this->session->set_flashdata('success', 'Data berhasil ditambahkan.');
 		}
 
 		$this->load->view('backend/nuansa/new_form');
+	}
+
+	public function edit($id = null){
+		if(!isset($id)) redirect('backend/nuansa/');
+
+		$nuansa = $this->nuansa_model;
+		$validation = $this->form_validation;
+		$validation->set_rules($nuansa->rules());
+
+		if($validation->run()){
+			$nuansa->update();
+			$this->session->set_flashdata('success', 'Data berhasil diedit.');
+			redirect('backend/nuansa');
+		}
+
+		$data['nuansa'] = $nuansa->getById($id);
+		$this->load->view('backend/nuansa/edit_form', $data);
+	}
+
+	public function delete($id){
+		if(!isset($id)) show_404();
+		$this->nuansa_model->_deleteImage($id);
+
+		if($this->nuansa_model->delete($id)){
+			$this->session->set_flashdata('success', 'Data telah dihapus.');
+			redirect('backend/nuansa');
+		}
 	}
 }

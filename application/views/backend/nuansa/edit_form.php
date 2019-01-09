@@ -3,73 +3,72 @@
 
   <head>
 
-    <?php $this->load->view('admin/_page/head') ?>
+    <?php $this->load->view('backend/_page/head') ?>
 
   </head>
 
   <body id="page-top">
 
-    <?php $this->load->view('admin/_page/navbar') ?>
+    <?php $this->load->view('backend/_page/navbar') ?>
 
     <div id="wrapper">
 
       <!-- Sidebar -->
-      <?php $this->load->view('admin/_page/sidebar.php') ?>
+      <?php $this->load->view('backend/_page/sidebar.php') ?>
 
       <div id="content-wrapper">
 
         <div class="container-fluid">
-          <h3>Form Edit User</h3>
-          <form action="<?= site_url('admin/user/edit/'.$user->user_id) ?>" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?= $user->user_id ?>">
+          <h3>Edit Data Nuansa</h3>
+          <form action="<?= site_url('backend/nuansa/edit/'.$nuansa->id_nuansa) ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id_nuansa" value="<?= $nuansa->id_nuansa ?>">
+
             <div class="form-group">
-              <label>Username</label>
-              <input type="text" name="username" class="form-control <?= form_error('usename') ? 'is-invalid' : '' ?>" value="<?= $user->username ?>">
+              <label>Nama Nuansa</label>
+              <input type="text" name="nama_nuansa" class="form-control <?= form_error('nama_nuansa') ? 'is-invalid' : '' ?>" value="<?= $nuansa->nama_nuansa ?>">
               <div class="invalid-feedback">
-                <?= form_error('username') ?>
+                <?= form_error('nama_nuansa') ?>
               </div>
             </div>
 
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" name="name" class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>" value="<?= $user->name ?>">
+              <label>Kategori</label>
+              <select name="kategori" class="form-control">
+                <?php if ($nuansa->kategori == 'interior'): ?>
+                  <option value="interior" selected>Interior</option>
+                  <option value="eksterior">Eksterior</option>
+                <?php else: ?>
+                  <option value="interior">Interior</option>
+                  <option value="eksterior" selected>Eksterior</option>
+                <?php endif ?>
+              </select>
               <div class="invalid-feedback">
-                <?= form_error('name') ?>
+                <?= form_error('kategori') ?>
               </div>
             </div>
 
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" value="<?= $user->email ?>">
-              <div class="invalid-feedback">
-                <?= form_error('email') ?>
-              </div>
+              <label>Gambar Lama :</label><br>
+              <img src="<?= base_url('assets/img/upload/'.$nuansa->gambar) ?>" width="20%">
+              <input type="hidden" name="gambar_lama" value="<?= $nuansa->gambar ?>">
             </div>
 
             <div class="form-group">
-              <label>No Telepon</label>
-              <input type="text" name="no_telp" class="form-control <?= form_error('no_telp') ? 'is-invalid' : '' ?>" value="<?= $user->no_telp ?>">
+              <label>Gambar Baru</label>
+              <input type="file" name="gambar" class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>">
               <div class="invalid-feedback">
-                <?= form_error('no_telp') ?>
+                <?= form_error('gambar') ?>
               </div>
             </div>
 
-            <div class="form-group">
-              <label>Address</label>
-              <textarea name="address" class="form-control <?= form_error('address') ? 'is-invalid' : '' ?>""><?= $user->address ?></textarea>
-              <div class="invalid-feedback">
-                <?= form_error('address') ?>
-              </div>
-            </div>
-
-            <input type="submit" name="btn" value="Save" class="btn btn-primary">
+            <input type="submit" name="btn" value="Simpan" class="btn btn-primary">
           </form>
 
         </div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
-        <?php $this->load->view('admin/_page/footer') ?>
+        <?php $this->load->view('backend/_page/footer') ?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -83,10 +82,10 @@
     </a>
 
     <!-- Logout Modal-->
-    <?php $this->load->view('admin/_page/modal') ?>
+    <?php $this->load->view('backend/_page/modal') ?>
 
     <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view('admin/_page/js') ?>
+    <?php $this->load->view('backend/_page/js') ?>
 
   </body>
 

@@ -55,16 +55,16 @@
                         <td><img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" alt="img" width="100px"></td>
                         <td>
                           <?php if ($data->warna == 'default'): ?>
-                            <a href="site_url('backend/nuansa/setColor')" class="btn btn-primary btn-sm">
+                            <a href="<?= site_url('backend/nuansa/setColor/'.$data->id_nuansa) ?>" class="btn btn-primary btn-sm">
                               <i class="fas fa-palette"></i> Set Warna
                             </a>
                           <?php endif ?>
                         </td>
                         <td>
-                          <a href="site_url('backend/nuansa/edit/'.<?= $data->id_nuansa ?>)" class="btn btn-success btn-sm">
+                          <a href="<?= site_url('backend/nuansa/edit/'.$data->id_nuansa) ?>" class="btn btn-success btn-sm">
                             Edit
                           </a>
-                          <a href="site_url('backend/nuansa/delete/'.<?= $data->id_nuansa ?>)" class="btn btn-danger btn-sm">
+                          <a href="<?= site_url('backend/nuansa/delete/'.$data->id_nuansa) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah data ingin di hapus?');">
                             Hapus
                           </a>
                         </td>

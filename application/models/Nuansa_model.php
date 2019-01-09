@@ -42,7 +42,28 @@ class Nuansa_model extends CI_Model {
 		$this->db->insert($this->_table, $this);
 	}
 
-	// image Upload
+	public function update(){
+		$post = $this->input->post();
+		$this->id_nuansa = $post['id_nuansa'];
+		$this->nama_nuansa = $post['nama_nuansa'];
+		$this->kategori = $post['kategori'];
+		
+		if(!empty($_FILES['gambar']['name'])){
+			$this->gambar = $this->_uploadImage();
+			$this->_deleteImage($post['id_nuansa']);
+			$this->warna = "default";
+		}else{
+			$this->gambar = $post['gambar_lama'];
+		}
+
+		$this->db->update($this->_table, $this, array('id_nuansa' => $post['id_nuansa']));
+	}
+
+	public function delete($id){
+		return $this->db->delete($this->_table, array('id_nuansa' => $id));
+	}
+
+	// image Upload & delete
 	private function _uploadImage(){
 		$config['upload_path']		= './assets/img/upload/';
 		$config['allowed_types']	= 'gif|jpg|png';
@@ -56,5 +77,11 @@ class Nuansa_model extends CI_Model {
 		}
 
 		return 'default.jpg';
+	}
+
+	public function _deleteImage($id){
+		$nuansa = $this->getById($id);
+
+		unlink('assets/img/upload/'.$nuansa->gambar);
 	}
 }

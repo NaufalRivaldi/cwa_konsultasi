@@ -28,9 +28,9 @@
 			<div class="col-md">
 				<div class="form">
 					<div class="form-login">
-						<h3>Login Toko Buah</h3>
+						<h3>Login Konsultasi - <?= APP_NAME ?></h3>
 						<hr>
-						<form>
+						<form action="<?= site_url('backend/backend/login') ?>" method="post">
 							<div class="form-group">
 								<label>Username</label>
 								<input type="text" name="username" class="form-control">
