@@ -29,13 +29,13 @@
             </div>
             
             <label>Set Warna :</label>
-            <div class="container-fluid">
+            <div class="container" id="dynamic_field">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col">
                   <input type="text" name="nama_warna[]" id="nama_warna" class="form-control list_nama">
                 </div>
-                <div class="col-md-6">
-                  <button name="add" id="add" class="btn btn-primary">Tambah</button>
+                <div class="col">
+                  <a href="#" name="add" id="add" class="btn btn-primary">Tambah</a>
                 </div>
               </div>
             </div>
