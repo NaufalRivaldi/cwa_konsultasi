@@ -20,21 +20,29 @@
 
         <div class="container-fluid">
           <h3>Set Warna <?= $nuansa->nama_nuansa ?></h3>
-          <form action="<?= site_url('backend/nuansa/edit/'.$nuansa->id_nuansa) ?>" method="post" enctype="multipart/form-data">
+          <form action="<?= site_url('backend/nuansa/setColor/'.$nuansa->id_nuansa) ?>" method="post" enctype="multipart/form-data" name="add_color" id="add_color">
             <input type="hidden" name="id_nuansa" value="<?= $nuansa->id_nuansa ?>">
 
             <div class="form-group">
               <label>Gambar :</label><br>
-              <img src="<?= base_url('assets/img/upload/'.$nuansa->gambar) ?>" width="70%">
+              <img src="<?= base_url('assets/img/upload/'.$nuansa->gambar) ?>" width="40%">
             </div>
-
-            <div class="form-group">
-              <label>List Warna :</label>
-              
+            
+            <label>Set Warna :</label>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" name="nama_warna[]" id="nama_warna" class="form-control list_nama">
+                </div>
+                <div class="col-md-6">
+                  <button name="add" id="add" class="btn btn-primary">Tambah</button>
+                </div>
+              </div>
             </div>
-
+            <br>
             <input type="submit" name="btn" value="Simpan" class="btn btn-primary">
           </form>
+          <br>
 
         </div>
         <!-- /.container-fluid -->
