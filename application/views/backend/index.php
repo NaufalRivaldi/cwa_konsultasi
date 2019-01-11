@@ -15,6 +15,7 @@
 
 	<!-- Custom fonts for this template-->
 	<link href="<?= base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?= base_url('assets/img/logo/logo.png') ?>" rel="icon">
 	<style type="text/css">
 		.form{
 			margin-top: 100px;
@@ -30,6 +31,11 @@
 					<div class="form-login">
 						<h3>Login Konsultasi - <?= APP_NAME ?></h3>
 						<hr>
+						<?php if ($this->session->flashdata('danger')): ?>
+				          <div class="alert alert-danger" role="alert">
+				        	<?php echo $this->session->flashdata('danger'); ?>
+				          </div> 
+				        <?php endif; ?>
 						<form action="<?= site_url('backend/backend/login') ?>" method="post">
 							<div class="form-group">
 								<label>Username</label>

@@ -11,18 +11,22 @@ class Nuansa extends CI_Controller {
 
 	public function index()
 	{
+		$this->auth_model->cek_session();
+
 		$data['nuansa'] = $this->nuansa_model->getAll();
 		$this->load->view('backend/nuansa/list', $data);
 	}
 
 	public function setColor($id){
-		
+		$this->auth_model->cek_session();
 		
 		$data['nuansa'] = $this->nuansa_model->getById($id);
 		$this->load->view('backend/nuansa/color', $data);
 	}
 
 	public function add(){
+		$this->auth_model->cek_session();
+
 		$nuansa = $this->nuansa_model;
 		$validation = $this->form_validation;
 		$validation->set_rules($nuansa->rules());
@@ -33,10 +37,13 @@ class Nuansa extends CI_Controller {
 			redirect('backend/nuansa');
 		}
 
-		$this->load->view('backend/nuansa/new_form');
+		$data['jenis'] = $this->db->get('jenis')->result();
+		$this->load->view('backend/nuansa/new_form', $data);
 	}
 
 	public function edit($id = null){
+		$this->auth_model->cek_session();
+
 		if(!isset($id)) redirect('backend/nuansa/');
 
 		$nuansa = $this->nuansa_model;
@@ -50,10 +57,13 @@ class Nuansa extends CI_Controller {
 		}
 
 		$data['nuansa'] = $nuansa->getById($id);
+		$data['jenis'] = $this->db->get('jenis')->result();
 		$this->load->view('backend/nuansa/edit_form', $data);
 	}
 
 	public function delete($id){
+		$this->auth_model->cek_session();
+		
 		if(!isset($id)) show_404();
 		$this->nuansa_model->_deleteImage($id);
 

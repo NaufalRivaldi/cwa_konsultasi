@@ -19,32 +19,32 @@
       <div id="content-wrapper">
 
         <div class="container-fluid">
-          <h3>Tambah Data Nuansa</h3>
-          <form action="<?= site_url('backend/nuansa/add') ?>" method="post" enctype="multipart/form-data">
+          <h3>Tambah Data Color Card</h3>
+          <form action="<?= site_url('backend/colorcard/add') ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <label>Nama Nuansa</label>
-              <input type="text" name="nama_nuansa" class="form-control <?= form_error('nama_nuansa') ? 'is-invalid' : '' ?>">
+              <label>Nama Barang</label>
+              <select name="id_barang" class="form-control">
+                <option value="">== Pilih ==</option>
+                <?php foreach ($barang as $key => $data): ?>
+                  <option value="<?= $data->id_barang ?>"><?= $data->nm_barang ?></option>
+                <?php endforeach ?>
+              </select>
               <div class="invalid-feedback">
-                <?= form_error('nama_nuansa') ?>
+                <?= form_error('id_barang') ?>
               </div>
             </div>
 
             <div class="form-group">
-              <label>Jenis</label>
-              <select name="kd_jenis" class="form-control">
-                <option value="">== Pilih ==</option>
-                <?php foreach ($jenis as $key => $data): ?>
-                  <option value="<?= $data->kd_jenis ?>"><?= $data->nm_jenis ?></option>
-                <?php endforeach ?>
-              </select>
+              <label>Nama Warna</label>
+              <input type="text" name="nama_warna" class="form-control">
               <div class="invalid-feedback">
-                <?= form_error('kd_jenis') ?>
+                <?= form_error('nama_warna') ?>
               </div>
             </div>
 
             <div class="form-group">
               <label>Gambar</label>
-              <input type="file" name="gambar" class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>">
+              <input type="file" name="gambar" class="form-control <?= form_error('gambar') ? 'is-invalid' : '' ?>">
               <div class="invalid-feedback">
                 <?= form_error('gambar') ?>
               </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2019 at 06:53 AM
+-- Generation Time: Jan 11, 2019 at 08:05 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -223,9 +223,15 @@ CREATE TABLE `cc` (
   `id_cc` int(11) NOT NULL,
   `nama_warna` varchar(100) DEFAULT NULL,
   `gambar` varchar(100) DEFAULT NULL,
-  `warna` varchar(50) DEFAULT NULL,
   `id_barang` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cc`
+--
+
+INSERT INTO `cc` (`id_cc`, `nama_warna`, `gambar`, `id_barang`) VALUES
+(4, 'asd', '5c383bfea1047.jpeg', 16);
 
 -- --------------------------------------------------------
 
@@ -344,11 +350,18 @@ CREATE TABLE `login_log` (
 
 CREATE TABLE `nuansa` (
   `id_nuansa` int(11) NOT NULL,
-  `nama_nuansa` varchar(100) NOT NULL,
-  `kategori` varchar(50) NOT NULL,
-  `gambar` varchar(100) NOT NULL,
-  `warna` varchar(100) NOT NULL
+  `nama_nuansa` varchar(100) DEFAULT NULL,
+  `kd_jenis` int(11) DEFAULT NULL,
+  `gambar` varchar(100) DEFAULT NULL,
+  `warna` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nuansa`
+--
+
+INSERT INTO `nuansa` (`id_nuansa`, `nama_nuansa`, `kd_jenis`, `gambar`, `warna`) VALUES
+(1, 'Landscape', 2, '5c37f4e3dc789.jpg', 'default');
 
 -- --------------------------------------------------------
 
@@ -35892,6 +35905,18 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `stat`) VALUES
 (2, 'junior', '5a066c88550d05b7554d79f47a9d12c436e7e6ce', 1),
 (3, 'naufal', '40F140910BBF6EF114A12E5D4230AD2AE921DD76', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `warna`
+--
+
+CREATE TABLE `warna` (
+  `id_warna` int(11) NOT NULL,
+  `id_nuansa` int(11) DEFAULT NULL,
+  `id_cc` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -35981,6 +36006,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `warna`
+--
+ALTER TABLE `warna`
+  ADD PRIMARY KEY (`id_warna`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -36003,7 +36034,7 @@ ALTER TABLE `cabang`
 -- AUTO_INCREMENT for table `cc`
 --
 ALTER TABLE `cc`
-  MODIFY `id_cc` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `detail_barang`
 --
@@ -36033,7 +36064,7 @@ ALTER TABLE `login_log`
 -- AUTO_INCREMENT for table `nuansa`
 --
 ALTER TABLE `nuansa`
-  MODIFY `id_nuansa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_nuansa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `raw`
 --
@@ -36049,6 +36080,11 @@ ALTER TABLE `slideshow`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `warna`
+--
+ALTER TABLE `warna`
+  MODIFY `id_warna` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

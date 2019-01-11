@@ -19,43 +19,45 @@
       <div id="content-wrapper">
 
         <div class="container-fluid">
-          <h3>Edit Data Nuansa</h3>
-          <form action="<?= site_url('backend/nuansa/edit/'.$nuansa->id_nuansa) ?>" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id_nuansa" value="<?= $nuansa->id_nuansa ?>">
+          <h3>Edit Data Color Card</h3>
+          <form action="<?= site_url('backend/colorcard/edit/'.$cc->id_cc) ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id_cc" value="<?= $cc->id_cc ?>">
 
             <div class="form-group">
-              <label>Nama Nuansa</label>
-              <input type="text" name="nama_nuansa" class="form-control <?= form_error('nama_nuansa') ? 'is-invalid' : '' ?>" value="<?= $nuansa->nama_nuansa ?>">
-              <div class="invalid-feedback">
-                <?= form_error('nama_nuansa') ?>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Jenis</label>
-              <select name="kd_jenis" class="form-control">
-                <?php foreach ($jenis as $key => $data): ?>
-                  <?php if ($nuansa->kd_jenis == $data->kd_jenis): ?>
-                    <option value="<?= $data->kd_jenis ?>" selected><?= $data->nm_jenis ?></option>
+              <label>Nama Barang</label>
+              <select name="id_barang" class="form-control">
+                <option value="">== Pilih ==</option>
+                <?php foreach ($barang as $key => $data): ?>
+                  <?php if ($cc->id_barang == $data->id_barang): ?>
+                    <option value="<?= $data->id_barang ?>" selected><?= $data->nm_barang ?></option>
                   <?php else: ?>
-                    <option value="<?= $data->kd_jenis ?>"><?= $data->nm_jenis ?></option>
+                    <option value="<?= $data->id_barang ?>"><?= $data->nm_barang ?></option>
                   <?php endif ?>
                 <?php endforeach ?>
               </select>
               <div class="invalid-feedback">
-                <?= form_error('kd_jenis') ?>
+                <?= form_error('id_barang') ?>
               </div>
             </div>
 
             <div class="form-group">
-              <label>Gambar Lama :</label><br>
-              <img src="<?= base_url('assets/img/upload/'.$nuansa->gambar) ?>" width="20%">
-              <input type="hidden" name="gambar_lama" value="<?= $nuansa->gambar ?>">
+              <label>Nama Warna</label>
+              <input type="text" name="nama_warna" class="form-control" value="<?= $cc->nama_warna ?>">
+              <div class="invalid-feedback">
+                <?= form_error('nama_warna') ?>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>Gambar Lama</label><br>
+              <img src="<?= base_url('assets/img/upload/cc/'.$cc->gambar) ?>" class="img-thumbnail" width="20%">
             </div>
 
             <div class="form-group">
               <label>Gambar Baru</label>
-              <input type="file" name="gambar" class="form-control <?= form_error('name') ? 'is-invalid' : '' ?>">
+              <input type="file" name="gambar" class="form-control <?= form_error('gambar') ? 'is-invalid' : '' ?>">
+
+              <input type="hidden" name="gambar_lama" value="<?= $cc->gambar ?>">
               <div class="invalid-feedback">
                 <?= form_error('gambar') ?>
               </div>

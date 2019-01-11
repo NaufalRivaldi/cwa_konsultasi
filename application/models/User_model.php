@@ -9,7 +9,18 @@ class User_model extends CI_Model{
 	public $password;
 
 	public function rules(){
-		
+		return [
+			[
+				'field' => 'username',
+				'label' => 'username',
+				'rules' => 'required'
+			],
+			[
+				'field' => 'password',
+				'label' => 'password',
+				'rules' => 'required'
+			]
+		];
 	}
 
 	public function login(){

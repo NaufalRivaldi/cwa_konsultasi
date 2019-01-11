@@ -1,6 +1,6 @@
 <ul class="sidebar navbar-nav">
   <li class="nav-item active">
-    <a class="nav-link" href="<?= site_url('backend') ?>">
+    <a class="nav-link" href="<?= site_url('backend/backend') ?>">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span>
     </a>
@@ -12,7 +12,7 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
       <a class="dropdown-item" href="<?= site_url('backend/nuansa') ?>">Nuansa</a>
-      <a class="dropdown-item" href="<?= site_url('backend/cc') ?>">Color Card</a>
+      <a class="dropdown-item" href="<?= site_url('backend/colorcard') ?>">Color Card</a>
     </div>
   </li>
 </ul>

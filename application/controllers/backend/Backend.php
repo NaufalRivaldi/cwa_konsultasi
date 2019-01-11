@@ -7,15 +7,16 @@ class Backend extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->library('form_validation');
-		$this->load->library('session');
 	}
 
 	public function index()
 	{
+		$this->auth_model->cek_session_kosong();
 		$this->load->view('backend/index');
 	}
 
 	public function dashboard(){
+		$this->auth_model->cek_session();
 		$this->load->view('backend/dashboard');
 	}
 
@@ -35,11 +36,19 @@ class Backend extends CI_Controller {
 					'logged_in' => true
 				);
 
-				$this->session->set_user($new_user);
+				$this->session->set_userdata($new_user);
 				redirect('backend/backend/dashboard');
+			}else{
+				$this->session->set_flashdata('danger', 'Username dan password tidak ditemukan.');
+				redirect('backend/backend/');
 			}
 		}else{
 			redirect('backend/backend/');
 		}
+	}
+
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect('backend/backend');
 	}
 }

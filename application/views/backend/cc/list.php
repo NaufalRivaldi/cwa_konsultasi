@@ -24,12 +24,12 @@
         <?php endif; ?>
 
         <div class="container-fluid">
-          <h3>Data Nuansa</h3>
+          <h3>Data Color Card</h3>
 
           <!-- table -->
           <div class="card">
             <div class="card-header">
-              <a class="nav-link" href="<?= site_url('backend/nuansa/add') ?>">
+              <a class="nav-link" href="<?= site_url('backend/colorcard/add') ?>">
                 <i class="fas fa-fw fa-plus"></i> Insert Data
               </a>
             </div>
@@ -39,32 +39,24 @@
                   <thead>
                     <tr>
                       <th>NO</th>
-                      <th>Nama Nuansa</th>
-                      <th>Jenis</th>
-                      <th>Gambar</th>
-                      <th>warna</th>
+                      <th>Nama Barang</th>
+                      <th>Nama Warna</th>
+                      <th>Gambar CC</th>
                       <th>ACTION</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no = 1; foreach ($nuansa as $key => $data): ?>
+                    <?php $no = 1; foreach ($cc as $key => $data): ?>
                       <tr>
                         <td><?= $no++ ?></td>
-                        <td><?= $data->nama_nuansa ?></td>
-                        <td><?= $data->nm_jenis ?></td>
-                        <td><img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" alt="img" width="100px"></td>
+                        <td><?= $data->nm_barang ?></td>
+                        <td><?= $data->nama_warna ?></td>
+                        <td><img src="<?= base_url('assets/img/upload/cc/'.$data->gambar) ?>" alt="img" class="img-thumbnail" width="120px"></td>
                         <td>
-                          <?php if ($data->warna == 'default'): ?>
-                            <a href="<?= site_url('backend/nuansa/setColor/'.$data->id_nuansa) ?>" class="btn btn-primary btn-sm">
-                              <i class="fas fa-palette"></i> Set Warna
-                            </a>
-                          <?php endif ?>
-                        </td>
-                        <td>
-                          <a href="<?= site_url('backend/nuansa/edit/'.$data->id_nuansa) ?>" class="btn btn-success btn-sm">
+                          <a href="<?= site_url('backend/colorcard/edit/'.$data->id_cc) ?>" class="btn btn-success btn-sm">
                             Edit
                           </a>
-                          <a href="<?= site_url('backend/nuansa/delete/'.$data->id_nuansa) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah data ingin di hapus?');">
+                          <a href="<?= site_url('backend/colorcard/delete/'.$data->id_cc) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah data ingin di hapus?');">
                             Hapus
                           </a>
                         </td>

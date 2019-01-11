@@ -6,7 +6,7 @@ class Nuansa_model extends CI_Model {
 	private $_table = 'nuansa';
 
 	public $nama_nuansa;
-	public $kategori;
+	public $kd_jenis;
 	public $gambar;
 	public $warna = "default";
 
@@ -18,15 +18,19 @@ class Nuansa_model extends CI_Model {
 				'rules' => 'required'
 			],
 			[
-				'field' => 'kategori',
-				'label' => 'kategori',
+				'field' => 'kd_jenis',
+				'label' => 'kd_jenis',
 				'rules' => 'required'
 			]
 		];
 	}
 
 	public function getAll(){
-		return $this->db->get($this->_table)->result();
+		$this->db->select('*');
+		$this->db->from($this->_table);
+		$this->db->join('jenis', 'jenis.kd_jenis = nuansa.kd_jenis', 'inner');
+		$this->db->order_by('jenis.nm_jenis', 'asc');
+		return $this->db->get()->result();
 	}
 
 	public function getById($id){
@@ -36,7 +40,7 @@ class Nuansa_model extends CI_Model {
 	public function save(){
 		$post = $this->input->post();
 		$this->nama_nuansa = $post['nama_nuansa'];
-		$this->kategori = $post['kategori'];
+		$this->kd_jenis = $post['kd_jenis'];
 		$this->gambar = $this->_uploadImage();
 
 		$this->db->insert($this->_table, $this);
@@ -46,7 +50,7 @@ class Nuansa_model extends CI_Model {
 		$post = $this->input->post();
 		$this->id_nuansa = $post['id_nuansa'];
 		$this->nama_nuansa = $post['nama_nuansa'];
-		$this->kategori = $post['kategori'];
+		$this->kd_jenis = $post['kd_jenis'];
 		
 		if(!empty($_FILES['gambar']['name'])){
 			$this->gambar = $this->_uploadImage();
@@ -66,7 +70,7 @@ class Nuansa_model extends CI_Model {
 	// image Upload & delete
 	private function _uploadImage(){
 		$config['upload_path']		= './assets/img/upload/';
-		$config['allowed_types']	= 'gif|jpg|png';
+		$config['allowed_types']	= 'gif|jpg|png|jpeg';
 		$config['file_name']		= uniqid();
 		$config['overwrite']		= true;
 		$config['max_size']			= 1024;
