@@ -11,7 +11,7 @@
 	      <a class="nav-item nav-link scroll" href="#konsultasi">Konsultasi</a>
 	    </div>
 	    <div class="navbar-nav ml-auto">
-	      <a class="nav-item nav-link" href="#">Kembali ke Website <i class="fa fa-money-check"></i><span class="sr-only">(current)</span></a>
+	      <a class="nav-item nav-link" href="https://www.cwabali.com/">Kembali ke Website <i class="fa fa-money-check"></i><span class="sr-only">(current)</span></a>
 	    </div>
 	  </div>
   </div>
