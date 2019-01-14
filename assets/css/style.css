@@ -1,11 +1,46 @@
 /*web*/
 
 /*head*/
+nav{
+	transition: all 0.5s;
+}
+
+.navbar-brand{
+	color: white !important;
+	text-shadow: 0 2px black;
+}
+
+.nav-item{
+	color: white !important;
+	text-shadow: 0 2px black;
+}
+
+.navbar-nav > .active{
+	border-bottom: #f39c12 solid 2px; 
+}
+
+.navbar-nav a:hover{
+	border-bottom: #f39c12 solid 2px; 
+}
+
+nav.custom > .navbar-brand{
+	color: black !important;
+}
+
+nav.custom {
+	background: #2d3436;
+	box-shadow: 0 0 5px;
+	transition: all 0.5s;
+}
+
 .xjumbotron{
 	height: 100vh;
 	display: flex;;
 	align-items: center;
 	justify-content: center;
+	background: url('../img/wallpainter.jpg') no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
 .max-height{
@@ -20,13 +55,50 @@
 	justify-content: center;
 }
 
+.kotak2{
+	text-align: center;
+}
+
+.kotak2 a{
+	text-decoration: none;
+	color: black;
+	font-size: 1.5em;
+}
+
+.img1{
+	width: 300px;
+	height: 300px;
+	background: url('../img/interior.jpg') no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 100%;
+	box-shadow: 0 0 5px;
+}
+
+.img2{
+	width: 300px;
+	height: 300px;
+	background: url('../img/eksterior.jpg') no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 100%;
+	box-shadow: 0 0 5px;
+}
+
 .jumbotron > .center > .display-4{
 	-webkit-animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	        animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        color: white;
 }
 .jumbotron > .center > .lead{
 	-webkit-animation: tracking-in-expand-fwd 0.8s 0.3s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 	        animation: tracking-in-expand-fwd 0.8s 0.3s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        color: white;
+}
+
+.hr-yellow{
+	margin: auto;
+	border-bottom: #f39c12 solid 2px;
 }
 
 /*artikel*/
@@ -52,7 +124,7 @@
 	transform: perspective(800px);
 }
 
-.animate h2, .animate p, .animate img{
+.animate h2, .animate p, .animate img, .animate span, .animate h3, .animate a{
 	transition: all 0.8s ease;
 }
 
@@ -69,6 +141,21 @@
 .animate.hidden img{
 	opacity: 0;
 	transform: translate3d(0,0,400px) rotateY(-40deg);
+}
+
+.animate.hidden span{
+	opacity: 0;
+	transform: translate3d(0,0,400px) rotateY(40deg);
+}
+
+.animate.hidden h3{
+	opacity: 0;
+	transform: translate3d(0,0,400px) rotateY(40deg);
+}
+
+.animate.hidden a{
+	opacity: 0;
+	transform: translate3d(0,0,400px) rotateY(40deg);
 }
 
 /*konsultasi*/

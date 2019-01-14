@@ -17,5 +17,6 @@
 
 <!-- Custom styles for this template-->
 <link href="<?= base_url('css/sb-admin.css') ?>" rel="stylesheet">
+<link rel="stylesheet" href="https://twitter.github.io/typeahead.js/css/examples.css" />
 
 <link href="<?= base_url('assets/img/logo/logo.png') ?>" rel="icon">

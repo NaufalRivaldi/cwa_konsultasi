@@ -13,6 +13,7 @@
 	  <div class="center">
 	  	<h1 class="display-4">Selamat Datang di Konsultasi Warna Online</h1>
 	  	<h1 class="display-4"><?= APP_NAME ?> <img src="<?= base_url('assets/img/logo/logo.png') ?>" width="60px"></h1>
+	  	<hr class="hr-yellow">
 	  	<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 	  </div>
 	</div>
@@ -25,37 +26,43 @@
 				<div class="row">
 					<h2>ARTIKEL KEMUDAHAN WARNA RUMAH</h2>
 				</div>
+				<?php $no=1; foreach ($artikel as $key => $data): ?>
+					<?php if ($no % 2 != 0): $no++?>
+						<div class="row">
+							<div class="col-sm text1">
+								<h3><?= $data['judul'] ?></h3>
+								<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span><br>
+								<?= substr($data['isi'], 0, 200) ?><br>
+								<a href="<?= site_url('artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
+							</div>
+							<div class="col-sm">
+								<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="100%">
+							</div>
+						</div>
+					<?php else: $no++?>
+						<div class="row">
+							<div class="col-sm">
+								<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="100%">
+							</div>
+							<div class="col-sm text2">
+								<h3><?= $data['judul'] ?></h3>
+								<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span><br>
+								<?= substr($data['isi'], 0, 200) ?><br>
+								<a href="<?= site_url('artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
+							</div>
+						</div>
+					<?php endif ?>
+				<?php endforeach ?>
 				<div class="row">
-					<div class="col-sm">
-						<p class="text1">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-					<div class="col-sm">
-						<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="100%">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm">
-						<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="100%">
-					</div>
-					<div class="col-sm">
-						<p class="text2">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
+					<div class="col-md-12">
+						<center>
+							<a href="<?= site_url('artikel/') ?>" class="btn btn-warning btn-lg">Lihat Lebih Banyak Artikel</a>
+						</center>
 					</div>
 				</div>
 			</div>
+
+			<!-- mobile -->
 			<div class="animate artikel-mobile">
 				<div class="row">
 					<h2>ARTIKEL KEMUDAHAN WARNA RUMAH</h2>

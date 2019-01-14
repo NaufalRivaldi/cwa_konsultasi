@@ -12,12 +12,22 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="kotak">
-					<a href="#">Interior</a>
+					<div class="kotak2">
+						<a href="<?= site_url('home/konsultasi/interior') ?>">
+							<div class="img1"></div>
+							Interior
+						</a>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="kotak">
-					<a href="#">Eksterior</a>
+					<div class="kotak2">
+						<a href="<?= site_url('home/konsultasi/eksterior') ?>">
+							<div class="img2"></div>
+							Eksterior
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -29,5 +39,14 @@
 
     <!-- Optional JavaScript -->
     <?php $this->load->view('frontend/_page/js') ?>
+    <?php 
+    	if(!empty($this->uri->segment(1))){
+    		echo "
+			<script>
+				$('nav').addClass('custom');
+			</script>
+    		";
+    	}
+    ?>
   </body>
 </html>

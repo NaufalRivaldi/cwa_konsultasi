@@ -65,4 +65,8 @@ class Colorcard extends CI_Controller{
 			redirect('backend/colorcard/');
 		}
 	}
+
+	public function fetch(){
+		echo $this->colorcard_model->fetchData($this->uri->segment(4));
+	}
 }

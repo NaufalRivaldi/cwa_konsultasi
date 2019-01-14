@@ -15,4 +15,7 @@
 <!-- Demo scripts for this page-->
 <script src="<?= base_url('js/demo/datatables-demo.js') ?>"></script>
 <script src="<?= base_url('js/demo/chart-area-demo.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+<script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 <script src="<?= base_url('js/script.js') ?>"></script>

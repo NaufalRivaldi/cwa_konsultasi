@@ -6,6 +6,7 @@ class Nuansa extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('nuansa_model');
+		$this->load->model('colorcard_model');
 		$this->load->library('form_validation');
 	}
 

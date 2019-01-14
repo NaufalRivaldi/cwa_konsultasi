@@ -29,6 +29,24 @@ class Colorcard_model extends CI_Model{
 		return $this->db->get()->result();
 	}
 
+	public function fetchData($query){
+		$this->db->select('*');
+		$this->db->from($this->_table);
+		$this->db->join('barang', 'barang.id_barang = cc.id_barang', 'inner');
+		$this->db->like('nama_warna', $query);
+		$query = $this->db->get();
+
+		if($query->num_rows() > 0){
+			foreach ($query->result_array() as $key => $row) {
+				$output[] = array(
+					'nama_warna' => $row['nama_warna'],
+					'gambar' => $row['gambar']
+				);
+			}
+			echo json_encode($output);
+		}
+	}
+
 	public function getById($id){
 		return $this->db->get_where($this->_table, ['id_cc' => $id])->row();
 	}
