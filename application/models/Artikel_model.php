@@ -22,4 +22,28 @@ class Artikel_model extends CI_Model{
 						->where('stat', 1)
 						->get('artikel',3)->result_array();
 	}
+
+	public function pagination_artikel($totRows){
+		$config['base_url'] = base_url('home/artikel/');
+		$config['total_rows'] = $totRows;
+		$config['per_page'] = 6;
+		$config['use_page_numbers'] = true;
+
+		$config['num_tag_open'] = "<li class='page-item'><div class='page-link'>";
+		$config['num_tag_close'] = "</div></li>";
+		$config['cur_tag_open'] = "<li class='page-item active'><div class='page-link'>";
+		$config['cur_tag_close'] = "</div></li>";
+		$config['next_tag_open'] = "<li class='page-item'><div class='page-link'>";
+		$config['next_tag_close'] = "</div></li>";
+		$config['prev_tag_open'] = "<li class='page-item'><div class='page-link'>";
+		$config['prev_tag_close'] = "</div></li>";
+		$config['last_tag_open'] = "<li class='page-item'><div class='page-link'>";
+		$config['last_tag_close'] = "</div></li>";
+		$config['first_tag_open'] = "<li class='page-item'><div class='page-link'>";
+		$config['first_tag_close'] = "</div></li>";
+
+
+		$this->pagination->initialize($config);
+		return $this->pagination->create_links();
+	}
 }

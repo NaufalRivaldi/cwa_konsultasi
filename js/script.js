@@ -13,18 +13,3 @@ $(document).ready(function(){
 		$('#br'+button_id+'').remove();
 	});
 });
-
-// scroll
-$(document).ready(function(){
-	var no = 1;
-	window.onscroll = function() {scrollFunction()};
-	function scrollFunction(){
-		if(document.body.scrollTop > 50 || document.documentElement.scrollTop > 50){
-			$(".navbar").removeClass('custom');
-			$(".navbar").addClass('bg-light');
-			console.log(var);
-		}else{
-
-		}
-	}
-});

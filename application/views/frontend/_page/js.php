@@ -20,6 +20,10 @@
 	$(window).scroll(function(){
 		if($(document).scrollTop() > 50){
 			$('nav').addClass('custom');
+
+			if($('nav').hasClass('nav-cek')){
+				$('.nav-cek').removeClass('custom');
+			}
 		}else{
 			$('nav').removeClass('custom');
 		}

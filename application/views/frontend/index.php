@@ -31,9 +31,14 @@
 						<div class="row">
 							<div class="col-sm text1">
 								<h3><?= $data['judul'] ?></h3>
-								<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span><br>
+								<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span>
+								<span class="badge badge-danger"><?= $data['nama_kategori'] ?></span>
+						    	<a href="https://www.instagram.com/citrawarnabali/">
+						    		<span class="badge badge-warning">@citrawarnabali</span>
+						    	</a>
+								<br>
 								<?= substr($data['isi'], 0, 200) ?><br>
-								<a href="<?= site_url('artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
+								<a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
 							</div>
 							<div class="col-sm">
 								<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="100%">
@@ -46,20 +51,18 @@
 							</div>
 							<div class="col-sm text2">
 								<h3><?= $data['judul'] ?></h3>
-								<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span><br>
+								<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span>
+								<span class="badge badge-danger"><?= $data['nama_kategori'] ?></span>
+						    	<a href="https://www.instagram.com/citrawarnabali/">
+						    		<span class="badge badge-warning">@citrawarnabali</span>
+						    	</a>
+								<br>
 								<?= substr($data['isi'], 0, 200) ?><br>
-								<a href="<?= site_url('artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
+								<a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
 							</div>
 						</div>
 					<?php endif ?>
 				<?php endforeach ?>
-				<div class="row">
-					<div class="col-md-12">
-						<center>
-							<a href="<?= site_url('artikel/') ?>" class="btn btn-warning btn-lg">Lihat Lebih Banyak Artikel</a>
-						</center>
-					</div>
-				</div>
 			</div>
 
 			<!-- mobile -->
@@ -68,36 +71,32 @@
 					<h2>ARTIKEL KEMUDAHAN WARNA RUMAH</h2>
 				</div>
 				<div class="row">
-					<div class="col-md-4" style="margin-bottom: 5%">
-						<div class="card">
-						  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
-						  <div class="card-body">
-						    <h5 class="card-title">Card title</h5>
-						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    <a href="#" class="btn btn-primary">Go somewhere</a>
-						  </div>
+					<?php foreach ($artikel as $key => $data): ?>
+						<div class="col-md-4" style="margin-bottom: 5%">
+							<div class="card">
+							  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
+							  <div class="card-body">
+							    <h5 class="card-title"><?= $data['judul'] ?></h5>
+							    <p class="card-text">
+							    	<span class="badge badge-info"><?= date('d-m-Y', strtotime($data['tanggal'])) ?></span>
+							    	<span class="badge badge-info"><?= $data['nama_kategori'] ?></span>
+							    	<a href="https://www.instagram.com/citrawarnabali/">
+							    		<span class="badge badge-warning">@citrawarnabali</span>
+							    	</a>
+							    </p>
+							    <a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning btn-block">Baca Artikel</a>
+							  </div>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4" style="margin-bottom: 5%">
-						<div class="card">
-						  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
-						  <div class="card-body">
-						    <h5 class="card-title">Card title</h5>
-						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    <a href="#" class="btn btn-primary">Go somewhere</a>
-						  </div>
-						</div>
-					</div>
-					<div class="col-md-4" style="margin-bottom: 5%">
-						<div class="card">
-						  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
-						  <div class="card-body">
-						    <h5 class="card-title">Card title</h5>
-						    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						    <a href="#" class="btn btn-primary">Go somewhere</a>
-						  </div>
-						</div>
-					</div>
+					<?php endforeach ?>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<center>
+						<a href="<?= site_url('home/artikel/') ?>" class="btn btn-warning btn-lg">Lihat Lebih Banyak Artikel</a>
+					</center><br>
 				</div>
 			</div>
 		</div>
