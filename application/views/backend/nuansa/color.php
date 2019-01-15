@@ -33,7 +33,7 @@
             <div id="dynamic_field">
               <div class="row">
                 <div class="col">
-                  <input type="text" name="nama_warna[]" id="nama_warna" class="typeahead list_nama" style="height: 45px; width: 170%">
+                  <input type="text" name="nama_warna[]" id="nama_warna" data-prefetch="<?php echo base_url(); ?>backend/colorcard/fetch" data-url="<?php echo base_url(); ?>backend/colorcard/fetch/%QUERY" class="typeahead list_nama" style="height: 45px; width: 170%">
                 </div>
                 <div class="col">
                   <a href="#" name="add" id="add" class="btn btn-primary">Tambah</a>
