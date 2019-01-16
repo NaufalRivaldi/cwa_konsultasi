@@ -35,6 +35,7 @@ class Home extends CI_Controller {
 	public function show($key){
 		$data['artikel'] = $this->artikel_model->get_artikel($key);
 		$data['popular_artikel'] = $this->artikel_model->get_popular_artikel();
+		$this->artikel_model->click($key);
 		
 		$this->load->view('frontend/show_artikel.php', $data);
 	}

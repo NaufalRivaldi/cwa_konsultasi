@@ -30,6 +30,13 @@ class Artikel_model extends CI_Model{
 						->get('artikel')->row();
 	}
 
+	public function click($link){
+		$click = $this->db->select('click')->get_where($this->_table, ['link' => $link])->row();
+		$click->click += 1;
+		
+		return $this->db->set('click', $click->click)->where('link', $link)->update($this->_table);
+	}
+
 	public function pagination_artikel($totRows){
 		$config['base_url'] = base_url('home/artikel/');
 		$config['total_rows'] = $totRows;
