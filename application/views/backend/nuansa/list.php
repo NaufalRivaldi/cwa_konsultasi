@@ -48,13 +48,31 @@
                   </thead>
                   <tbody>
                     <?php $no = 1; foreach ($nuansa as $key => $data): ?>
+                    <?php 
+                      $this->db->select('*');
+                      $this->db->from('warna');
+                      $this->db->join('cc', 'warna.id_cc = cc.id_cc', 'inner');
+                      $warna = $this->db->where(['warna.id_nuansa' => $data->id_nuansa])->get()->result();
+                    ?>
                       <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $data->nama_nuansa ?></td>
                         <td><?= $data->nm_jenis ?></td>
-                        <td><img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" alt="img" width="100px"></td>
+                        <td><img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" alt="img" width="100px" class="img-thumbnail"></td>
                         <td>
-                          <?php if ($data->warna == 'default'): ?>
+                          <?php if (!empty($warna)): ?>
+                            <?php foreach ($warna as $key => $value): ?>
+                              <div class="row">
+                                <div class="col">
+                                  <img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="60px" class="img-thumbnail">
+                                </div>
+                                <div class="col">
+                                  <?= $value->nama_warna ?>
+                                </div>
+                              </div>
+                            <?php endforeach ?>
+
+                          <?php else: ?>
                             <a href="<?= site_url('backend/nuansa/setColor/'.$data->id_nuansa) ?>" class="btn btn-primary btn-sm">
                               <i class="fas fa-palette"></i> Set Warna
                             </a>

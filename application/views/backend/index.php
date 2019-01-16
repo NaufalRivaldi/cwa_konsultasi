@@ -47,6 +47,7 @@
 							</div>
 							<input type="submit" name="btn" value="Login" class="btn btn-primary btn-block">
 						</form>
+						<center>Copyright © Naufal Rivaldi 2019</center>
 					</div>
 				</div>
 			</div>

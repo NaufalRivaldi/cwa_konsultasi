@@ -7,6 +7,7 @@ class Nuansa extends CI_Controller {
 		parent::__construct();
 		$this->load->model('nuansa_model');
 		$this->load->model('colorcard_model');
+		$this->load->model('warna_model');
 		$this->load->library('form_validation');
 	}
 
@@ -20,6 +21,17 @@ class Nuansa extends CI_Controller {
 
 	public function setColor($id){
 		$this->auth_model->cek_session();
+
+		if(empty($id)) show_404();
+		$warna = $this->warna_model;
+		$validation = $this->form_validation;
+		$validation->set_rules($warna->rules());
+
+		if($validation->run()){
+			$warna->setColor();
+			$this->session->set_flashdata('success', 'Warna sudah di set.');
+			redirect('backend/nuansa/');
+		}
 		
 		$data['nuansa'] = $this->nuansa_model->getById($id);
 		$this->load->view('backend/nuansa/color', $data);

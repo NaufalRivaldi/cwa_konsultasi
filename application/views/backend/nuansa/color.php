@@ -33,7 +33,7 @@
             <div id="dynamic_field">
               <div class="row">
                 <div class="col">
-                  <input type="text" name="nama_warna[]" id="nama_warna" data-prefetch="<?php echo base_url(); ?>backend/colorcard/fetch" data-url="<?php echo base_url(); ?>backend/colorcard/fetch/%QUERY" class="typeahead list_nama" style="height: 45px; width: 170%">
+                  <input type="text" name="nama_warna[]" id="nama_warna" class="typeahead list_nama" style="height: 45px; width: 170%">
                 </div>
                 <div class="col">
                   <a href="#" name="add" id="add" class="btn btn-primary">Tambah</a>
@@ -71,7 +71,7 @@
     <script type="text/javascript">
       $(document).ready(function(){
         var sample_data = new Bloodhound({
-            datumTokenizer: function(d){return Bloodhound.tokenizers.obj.whitespace('d.nama_warna');},
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch:'<?php echo base_url(); ?>backend/colorcard/fetch',
             remote:{
@@ -79,19 +79,52 @@
               wildcard:'%QUERY'
             }
         });
-
-        sample_data.initialize();
         
 
-        $('#nama_warna').typeahead(null, {
-          highlight: true,
+        $('input.list_nama').typeahead(null, {
           name: 'nama_warna',
           displayKey: 'nama_warna',
           source:sample_data,
           limit:10,
           templates:{
-            suggestion:Handlebars.compile('<div class="row"><div class="col-md-2" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img-thumbnail" width="48" /></div><div class="col-md-10" style="padding-right:5px; padding-left:5px;">{{nama_warna}}</div></div>')
+            suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="100" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nama_warna}}</div></div>')
           }
+        });
+      });
+
+      $(document).ready(function(){
+        var i = 1;
+        $('#add').click(function(e){
+          e.preventDefault();
+          i++;
+          $('#dynamic_field').append('<br id="br'+i+'"><div class="row" id="row'+i+'"><div class="col"><input type="text" name="nama_warna[]" id="nama_warna'+i+'" class="typeahead list_nama" style="height: 45px; width: 170%"></div><div class="col"><a href="#" name="remove" id="'+i+'" class="btn btn-danger btn-remove">X</a></div></div></div>');
+          
+          var sample_data = new Bloodhound({
+              datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
+              queryTokenizer: Bloodhound.tokenizers.whitespace,
+              prefetch:'<?php echo base_url(); ?>backend/colorcard/fetch',
+              remote:{
+                url:'<?php echo base_url(); ?>backend/colorcard/fetch/%QUERY',
+                wildcard:'%QUERY'
+              }
+          });
+
+          $('#nama_warna'+i).typeahead(null, {
+            name: 'nama_warna',
+            displayKey: 'nama_warna',
+            source:sample_data,
+            limit:10,
+            templates:{
+              suggestion:Handlebars.compile('<div class="row"><div class="col-md-2" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img-thumbnail" width="48" /></div><div class="col-md-10" style="padding-right:5px; padding-left:5px;">{{nama_warna}}</div></div>')
+            }
+          });
+        });
+
+        $(document).on('click', '.btn-remove', function(e){
+          e.preventDefault();
+          var button_id = $(this).attr("id");
+          $('#row'+button_id+'').remove();
+          $('#br'+button_id+'').remove();
         });
       });
     </script>

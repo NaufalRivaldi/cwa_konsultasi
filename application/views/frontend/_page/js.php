@@ -17,15 +17,34 @@
 	})();
 
 	//navbar
-	$(window).scroll(function(){
-		if($(document).scrollTop() > 50){
-			$('nav').addClass('custom');
+	
+</script>
 
+<?php 
+	if(!empty($this->uri->segment(1))){
+		echo "
+		<script>
+			$('nav').addClass('custom');
 			if($('nav').hasClass('nav-cek')){
 				$('.nav-cek').removeClass('custom');
 			}
-		}else{
-			$('nav').removeClass('custom');
-		}
-	});
-</script>
+		</script>
+		";
+	}else{
+		echo "
+		<script>
+			$(window).scroll(function(){
+				if($(document).scrollTop() > 50){
+					$('nav').addClass('custom');
+
+					if($('nav').hasClass('nav-cek')){
+						$('.nav-cek').removeClass('custom');
+					}
+				}else{
+					$('nav').removeClass('custom');
+				}
+			});
+		</script>
+		";
+	}
+?>

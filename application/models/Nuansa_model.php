@@ -8,7 +8,6 @@ class Nuansa_model extends CI_Model {
 	public $nama_nuansa;
 	public $kd_jenis;
 	public $gambar;
-	public $warna = "default";
 
 	public function rules(){
 		return [

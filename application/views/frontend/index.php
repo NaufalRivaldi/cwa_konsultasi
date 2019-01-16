@@ -38,7 +38,7 @@
 						    	</a>
 								<br>
 								<?= substr($data['isi'], 0, 200) ?><br>
-								<a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
+								<a href="<?= site_url('home/show/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
 							</div>
 							<div class="col-sm">
 								<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="100%">
@@ -58,7 +58,7 @@
 						    	</a>
 								<br>
 								<?= substr($data['isi'], 0, 200) ?><br>
-								<a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
+								<a href="<?= site_url('home/show/'.$data['link']) ?>" class="btn btn-warning">Baca Artikel</a>
 							</div>
 						</div>
 					<?php endif ?>

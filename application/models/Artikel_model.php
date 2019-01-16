@@ -23,6 +23,13 @@ class Artikel_model extends CI_Model{
 						->get('artikel',3)->result_array();
 	}
 
+	public function get_artikel($key){
+		return $this->db->join('kategori', 'kategori.id_kategori = artikel.id_kategori')
+						->where('stat', 1)
+						->where('link', $key)
+						->get('artikel')->row();
+	}
+
 	public function pagination_artikel($totRows){
 		$config['base_url'] = base_url('home/artikel/');
 		$config['total_rows'] = $totRows;

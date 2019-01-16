@@ -31,4 +31,11 @@ class Home extends CI_Controller {
 		$data['paginate'] = $this->artikel_model->pagination_artikel($art);
 		$this->load->view('frontend/artikel', $data);
 	}
+
+	public function show($key){
+		$data['artikel'] = $this->artikel_model->get_artikel($key);
+		$data['popular_artikel'] = $this->artikel_model->get_popular_artikel();
+		
+		$this->load->view('frontend/show_artikel.php', $data);
+	}
 }

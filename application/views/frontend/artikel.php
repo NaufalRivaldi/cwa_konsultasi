@@ -36,7 +36,7 @@
 							    		<span class="badge badge-warning">@citrawarnabali</span>
 							    	</a>
 							    </p>
-							    <a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning btn-block">Baca Artikel</a>
+							    <a href="<?= site_url('home/show/'.$data['link']) ?>" class="btn btn-warning btn-block">Baca Artikel</a>
 							  </div>
 							</div>
 						</div>
