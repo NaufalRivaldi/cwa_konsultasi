@@ -7,7 +7,7 @@
 	  <div class="collapse navbar-collapse asd" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
 	      <a class="nav-item nav-link scroll <?= (empty($this->uri->segment(2))) ? 'active' : '' ?>" href="<?= (empty($this->uri->segment(2))) ? '#home' : site_url() ?>">Beranda <span class="sr-only">(current)</span></a>
-	      <a class="nav-item nav-link scroll <?= ($this->uri->segment(2) == 'artikel' || $this->uri->segment(2) == 'show') ? 'active' : '' ?>" href="<?= (empty($this->uri->segment(2))) ? '#artikel' : site_url('home/artikel') ?>">Artikel</a>
+	      <a class="nav-item nav-link scroll <?= ($this->uri->segment(2) == 'artikel' || $this->uri->segment(2) == 'showartikel') ? 'active' : '' ?>" href="<?= (empty($this->uri->segment(2))) ? '#artikel' : site_url('home/showartikel') ?>">Artikel</a>
 	      <a class="nav-item nav-link scroll <?= ($this->uri->segment(2) == 'konsultasi') ? 'active' : '' ?>" href="#konsultasi">Konsultasi</a>
 	    </div>
 	    <div class="navbar-nav ml-auto">

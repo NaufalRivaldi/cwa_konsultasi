@@ -5,6 +5,8 @@ class Home extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('artikel_model');
+		$this->load->model('nuansa_model');
+		$this->load->model('warna_model');
 	}
 	
 	public function index()
@@ -13,11 +15,16 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/index', $data);
 	}
 
-	public function konsultasi(){
-		$this->load->view('frontend/step1.php');
+	public function konsultasi($pilih = null){
+		if(!empty($pilih)){
+			$data['nuansa'] = $this->nuansa_model->viewNuansa($pilih);
+			$this->load->view('frontend/step2.php', $data);
+		}else{
+			$this->load->view('frontend/step1.php');
+		}
 	}
 
-	public function artikel($page=null){
+	public function showArtikel($page=null){
 		$per_halaman = 6;
 		//menghitung offset (data dalam table)
 		if($page == null) {
@@ -32,7 +39,7 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/artikel', $data);
 	}
 
-	public function show($key){
+	public function artikel($key){
 		$data['artikel'] = $this->artikel_model->get_artikel($key);
 		$data['popular_artikel'] = $this->artikel_model->get_popular_artikel();
 		$this->artikel_model->click($key);

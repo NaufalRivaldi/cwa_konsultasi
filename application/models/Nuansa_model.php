@@ -36,6 +36,16 @@ class Nuansa_model extends CI_Model {
 		return $this->db->get_where($this->_table, ['id_nuansa' => $id])->row();
 	}
 
+	public function viewNuansa($key){
+		$kd_jenis = $this->changeId($key);
+		return $this->db->get_where($this->_table, ['kd_jenis' => $kd_jenis])->result();
+	}
+
+	public function changeId($data){
+		$kd_jenis = $this->db->get_where('jenis', ['nm_jenis' => $data])->row();
+		return $kd_jenis->kd_jenis;
+	}
+
 	public function save(){
 		$post = $this->input->post();
 		$this->nama_nuansa = $post['nama_nuansa'];

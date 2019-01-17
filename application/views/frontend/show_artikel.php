@@ -29,6 +29,9 @@
 						<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="80%">
 
 						<p><?= $artikel->isi ?></p>
+						
+						<!-- comment -->
+						<div id="disqus_thread"></div>
 					</div>
 					<div class="col-md-3">
 						<h3>Baca Juga</h3>
@@ -40,7 +43,7 @@
 								  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
 								  <div class="card-body">
 								    <h5 class="card-title"><?= $data['judul'] ?></h5>
-								    <a href="<?= site_url('home/show/'.$data['link']) ?>" class="btn btn-warning btn-block">Baca Artikel</a>
+								    <a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning btn-block">Baca Artikel</a>
 								  </div>
 								</div>
 							</div>
