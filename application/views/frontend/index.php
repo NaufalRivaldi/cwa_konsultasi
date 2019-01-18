@@ -14,7 +14,7 @@
 	  	<h1 class="display-4">Selamat Datang di Konsultasi Warna Online</h1>
 	  	<h1 class="display-4"><?= APP_NAME ?> <img src="<?= base_url('assets/img/logo/logo.png') ?>" width="60px"></h1>
 	  	<hr class="hr-yellow">
-	  	<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	  	<p class="lead">Memberikan solusi untuk masalah pemilihan warna cat anda.</p>
 	  </div>
 	</div>
 	<!-- jumbotron -->

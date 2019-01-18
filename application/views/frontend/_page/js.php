@@ -62,4 +62,13 @@
 		</script>
 		";
 	}
+
+	if(isset($id)){
+		echo "
+		<script>
+			$('#exampleModal').modal('show');
+			$('#collapseExample".$collapse."').collapse('show');
+		</script>
+		";
+	}
 ?>

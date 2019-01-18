@@ -8,18 +8,21 @@ class Artikel_model extends CI_Model{
 						->order_by('tanggal', 'desc')
 						->where('stat', 1)
 						->limit($per_halaman, $offset)
+						->where_not_in('artikel.id_kategori', 1)
 						->get('artikel')->result_array();
 	}
 	public function get_new_artikel($limit){
 		return $this->db->join('kategori', 'kategori.id_kategori = artikel.id_kategori')
 						->order_by('tanggal', 'desc')
 						->where('stat', 1)
+						->where_not_in('artikel.id_kategori', 1)
 						->get('artikel',$limit)->result_array();
 	}
 	public function get_popular_artikel(){
 		return $this->db->join('kategori', 'kategori.id_kategori = artikel.id_kategori')
 						->order_by('click', 'desc')
 						->where('stat', 1)
+						->where_not_in('artikel.id_kategori', 1)
 						->get('artikel',3)->result_array();
 	}
 
@@ -38,7 +41,7 @@ class Artikel_model extends CI_Model{
 	}
 
 	public function pagination_artikel($totRows){
-		$config['base_url'] = base_url('home/artikel/');
+		$config['base_url'] = base_url('home/showartikel/');
 		$config['total_rows'] = $totRows;
 		$config['per_page'] = 6;
 		$config['use_page_numbers'] = true;
