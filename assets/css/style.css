@@ -102,6 +102,11 @@ nav.custom {
 }
 
 /*artikel*/
+.img-artikel{
+	width: 100%;
+	height: 200px; 
+}
+
 #artikel > .container > .animate > .row > h2{
 	margin: auto;
 	border-bottom: #f39c12 solid 2px;
@@ -124,7 +129,7 @@ nav.custom {
 	transform: perspective(800px);
 }
 
-.animate h2, .animate p, .animate img, .animate span, .animate h3, .animate a{
+.animate h2, .animate p, .animate .img-artikel, .animate span, .animate h3, .animate a{
 	transition: all 0.8s ease;
 }
 
@@ -138,7 +143,7 @@ nav.custom {
 	transform: translate3d(0,0,400px) rotateY(40deg);
 }
 
-.animate.hidden img{
+.animate.hidden .img-artikel{
 	opacity: 0;
 	transform: translate3d(0,0,400px) rotateY(-40deg);
 }

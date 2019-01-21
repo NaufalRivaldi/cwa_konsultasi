@@ -19,14 +19,14 @@
 						<hr class="hr-yellow">
 						<p>
 							Post : 
-							<span class="badge badge-info"><?= date('d-m-Y', strtotime($artikel->tanggal)) ?></span>
+							<span class="badge badge-info"><?= $artikel->tanggal ?></span>
 					    	<a href="https://www.instagram.com/citrawarnabali/">
 					    		<span class="badge badge-warning">@citrawarnabali</span>
 					    	</a><br>
 					    	Kategori : <span class="badge badge-danger"><?= $artikel->nama_kategori ?></span>
 						</p>
 
-						<img src="<?= base_url('assets/img/no-image.jpg') ?>" width="80%">
+						<img src="https://www.cwabali.com/upload/artikel/<?= $artikel->img ?>" width="80%">
 
 						<p><?= $artikel->isi ?></p>
 						
@@ -40,7 +40,7 @@
 						<?php foreach ($popular_artikel as $key => $data): ?>
 							<div class="col-md-12" style="margin-bottom: 5%">
 								<div class="card">
-								  <img class="card-img-top" src="<?= base_url('assets/img/no-image.jpg') ?>" alt="Card image cap">
+								  <div class="img-artikel" style="background: url('https://www.cwabali.com/upload/artikel/<?= $data['img'] ?>') no-repeat; background-position: center; background-size: cover;"></div>
 								  <div class="card-body">
 								    <h5 class="card-title"><?= $data['judul'] ?></h5>
 								    <a href="<?= site_url('home/artikel/'.$data['link']) ?>" class="btn btn-warning btn-block">Baca Artikel</a>
