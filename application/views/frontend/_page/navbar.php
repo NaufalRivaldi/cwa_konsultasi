@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light">
   <div class="container">
-  	<a class="navbar-brand" href="#"><?= APP_NAME ?></a>
+  	<a class="navbar-brand" href="#">
+			<img src="<?= base_url('assets/img/logo.png') ?>" width="100" class="d-inline-block align-top" alt=""> 
+		</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>

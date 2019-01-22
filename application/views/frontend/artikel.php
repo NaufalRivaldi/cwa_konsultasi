@@ -11,6 +11,7 @@
 	<!-- jumbtron -->
 	<div class="jumbotron artikelJ">
 	  <div class="center">
+			<br><br>
 	  	<h1 class="display-4">ARTIKEL KEMUDAHAN WARNA RUMAH</h1>
 	  	<h1 class="display-4"><?= APP_NAME ?> <img src="<?= base_url('assets/img/logo/logo.png') ?>" width="60px"></h1>
 	  </div>

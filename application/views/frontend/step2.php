@@ -64,7 +64,7 @@
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Rekomendasi Cat</h5>
+	        <h3 class="modal-title" id="exampleModalLabel">Rekomendasi</h3>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
@@ -74,7 +74,7 @@
 						<div class="col-md-12">
 							<center>
 								<h3>Warna Cat</h3>
-								<img src="<?= base_url('assets/img/upload/cc/'.$gambar_cc) ?>" alt="img" width="40%" class="img-thumbnail"><br><br>
+								<img src="<?= base_url('assets/img/upload/cc/'.$gambar_cc) ?>" alt="img" width="20%" class="img-thumbnail"><br><br>
 								<h3>Pilihan cat sesuai dengan warna :</h3>
 							</center>
 						</div>
@@ -91,26 +91,7 @@
 		        		<p class="text-center">
 		        			<b><?= $a->nm_barang ?></b><br>
 		        			<?= $data->nm_barang ?><br>
-		        			Harga : Rp. <?= number_format($data->harga) ?>
-		        		</p>
-		        	</div>
-		        <?php endforeach ?>
-	        </div>
-					<center><br>
-						<h3>Merk Lain : </h3>
-					</center>
-					<div class="row justify-content-md-center">
-	        	<?php foreach ($barang_serupa as $key => $data): ?>
-		        	<?php 
-		        		$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
-		        	?>
-		        	<div class="col-md-3">
-		        		<center>
-		        			<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
-		        		</center>
-		        		<p class="text-center">
-		        			<b><?= $a->nm_barang ?></b><br>
-		        			<?= $data->nm_barang ?><br>
+									<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
 		        			Harga : Rp. <?= number_format($data->harga) ?>
 		        		</p>
 		        	</div>
