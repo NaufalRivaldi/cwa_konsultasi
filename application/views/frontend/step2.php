@@ -34,19 +34,20 @@
 							    <?php 
 							    	$this->db->select('*');
 				                    $this->db->from('warna');
-				                    $this->db->join('cc', 'warna.id_cc = cc.id_cc', 'inner');
-				                    $warna = $this->db->where(['warna.id_nuansa' => $data->id_nuansa])->get()->result();
+														$this->db->join('cc', 'warna.id_cc = cc.id_cc', 'inner');
+														$this->db->join('barang', 'cc.id_barang = barang.id_barang', 'inner');
+														$warna = $this->db->where(['warna.id_nuansa' => $data->id_nuansa])->get()->result();
 							    ?>
 							    <!-- warna -->
 							    <p>Rekomendasi Warna Nuansa: </p>
 							    <div class="row">
 							    	<?php foreach ($warna as $key => $value): ?>
-		                                <div class="col-md-2">
-		                                  <a href="<?= site_url('home/konsultasi/'.$pilih.'/'.$value->id_cc.'/'.$i) ?>">
-		                                  	<img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="100%" class="img-thumbnail">
-		                                  </a>
-		                                </div>
-		                            <?php endforeach ?>
+												<div class="col-md-2">
+													<a href="<?= site_url('home/konsultasi/'.$pilih.'/'.$value->id_cc.'/'.$value->kd_merk.'/'.$i) ?>">
+														<img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="100%" class="img-thumbnail">
+													</a>
+												</div>
+										<?php endforeach ?>
 							    </div>
 							  </div>
 							</div>
@@ -69,8 +70,37 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	        <div class="row">
+					<div class="row">
+						<div class="col-md-12">
+							<center>
+								<h3>Warna Cat</h3>
+								<img src="<?= base_url('assets/img/upload/cc/'.$gambar_cc) ?>" alt="img" width="40%" class="img-thumbnail"><br><br>
+								<h3>Pilihan cat sesuai dengan warna :</h3>
+							</center>
+						</div>
+					</div>
+	        <div class="row justify-content-md-center">
 	        	<?php foreach ($barang as $key => $data): ?>
+		        	<?php 
+		        		$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
+		        	?>
+		        	<div class="col-md-3">
+		        		<center>
+		        			<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
+		        		</center>
+		        		<p class="text-center">
+		        			<b><?= $a->nm_barang ?></b><br>
+		        			<?= $data->nm_barang ?><br>
+		        			Harga : Rp. <?= number_format($data->harga) ?>
+		        		</p>
+		        	</div>
+		        <?php endforeach ?>
+	        </div>
+					<center><br>
+						<h3>Merk Lain : </h3>
+					</center>
+					<div class="row justify-content-md-center">
+	        	<?php foreach ($barang_serupa as $key => $data): ?>
 		        	<?php 
 		        		$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
 		        	?>

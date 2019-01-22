@@ -16,12 +16,14 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/index', $data);
 	}
 
-	public function konsultasi($pilih = null, $id = null, $collapse = null){
+	public function konsultasi($pilih = null, $id = null, $kd_merk = null, $collapse = null){
 		if(!empty($pilih)){
 			$data['nuansa'] = $this->nuansa_model->viewNuansa($pilih);
 			if(!empty($id)){
 				$cc = $this->db->get_where('cc', ['id_cc' => $id])->row();
-				$data['barang'] = $this->barang_model->raw($cc->nama_warna);
+				$data['barang'] = $this->barang_model->raw($cc->nama_warna, $kd_merk);
+				$data['barang_serupa'] = $this->barang_model->rawOther($cc->nama_warna, $kd_merk);
+				$data['gambar_cc'] = $cc->gambar;
 			}
 			$data['id'] = $id;
 			$data['pilih'] = $pilih;
