@@ -32,7 +32,7 @@
 							    <p class="card-text">
 							    	<span class="badge badge-info"><?= $data['tanggal'] ?></span>
 							    	<span class="badge badge-danger"><?= $data['nama_kategori'] ?></span>
-							    	<a href="https://www.instagram.com/citrawarnabali/">
+							    	<a href="https://www.instagram.com/citrawarnabali/" target="_blank">
 							    		<span class="badge badge-warning">@citrawarnabali</span>
 							    	</a>
 							    </p>

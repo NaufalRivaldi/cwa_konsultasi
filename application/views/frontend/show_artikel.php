@@ -20,7 +20,7 @@
 						<p>
 							Post : 
 							<span class="badge badge-info"><?= $artikel->tanggal ?></span>
-					    	<a href="https://www.instagram.com/citrawarnabali/">
+					    	<a href="https://www.instagram.com/citrawarnabali/" target="_blank">
 					    		<span class="badge badge-warning">@citrawarnabali</span>
 					    	</a><br>
 					    	Kategori : <span class="badge badge-danger"><?= $artikel->nama_kategori ?></span>
