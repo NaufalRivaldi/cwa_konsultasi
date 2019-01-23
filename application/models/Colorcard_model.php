@@ -40,7 +40,8 @@ class Colorcard_model extends CI_Model{
 			foreach ($query->result_array() as $key => $row) {
 				$output[] = array(
 					'nama_warna' => $row['nama_warna'],
-					'gambar' => $row['gambar']
+					'gambar' => $row['gambar'],
+					'nm_barang' => $row['nm_barang']
 				);
 			}
 			echo json_encode($output);

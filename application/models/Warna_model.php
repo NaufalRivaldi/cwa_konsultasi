@@ -20,8 +20,9 @@ class Warna_model extends CI_Model{
 		$post = $this->input->post();		
 		
 		for ($i=0; $i < count($post['nama_warna']); $i++) { 
+			$row = explode('-', $post['nama_warna'][$i]);
 			$this->id_nuansa = $post['id_nuansa'];
-			$this->id_cc = $this->changeId($post['nama_warna'][$i]);
+			$this->id_cc = $this->changeId($row[1]);
 
 			$this->db->insert($this->_table, $this);
 		}

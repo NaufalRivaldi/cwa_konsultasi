@@ -64,7 +64,6 @@ class Nuansa_model extends CI_Model {
 		if(!empty($_FILES['gambar']['name'])){
 			$this->gambar = $this->_uploadImage();
 			$this->_deleteImage($post['id_nuansa']);
-			$this->warna = "default";
 		}else{
 			$this->gambar = $post['gambar_lama'];
 		}
