@@ -42,7 +42,7 @@
 							    <p>Rekomendasi Warna Nuansa: </p>
 							    <div class="row">
 							    	<?php foreach ($warna as $key => $value): ?>
-												<div class="col-md-2">
+												<div class="col-sm-2">
 													<a href="<?= site_url('home/konsultasi/'.$pilih.'/'.$value->id_cc.'/'.$value->kd_merk.'/'.$i) ?>">
 														<img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="100%" class="img-thumbnail">
 													</a>
