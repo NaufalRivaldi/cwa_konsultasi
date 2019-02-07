@@ -29,7 +29,7 @@
 						<?php $i=1; foreach ($nuansa as $key => $data): ?>
 							<div class="collapse" id="collapseExample<?= $i;  ?>">
 							  <div class="card card-body">
-							    <img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" width="70%">
+							    <img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" width="90%">
 							    <!-- warna -->
 							    <?php 
 							    	$this->db->select('*');
@@ -42,7 +42,7 @@
 							    <p>Rekomendasi Warna Nuansa: </p>
 							    <div class="row">
 							    	<?php foreach ($warna as $key => $value): ?>
-												<div class="col-sm-2">
+												<div class="col cc">
 													<a href="<?= site_url('home/konsultasi/'.$pilih.'/'.$value->id_cc.'/'.$value->kd_merk.'/'.$i) ?>">
 														<img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="100%" class="img-thumbnail">
 													</a>
@@ -74,7 +74,7 @@
 						<div class="col-md-12">
 							<center>
 								<h3>Warna Cat</h3>
-								<img src="<?= base_url('assets/img/upload/cc/'.$gambar_cc) ?>" alt="img" width="20%" class="img-thumbnail"><br><br>
+								<img src="<?= base_url('assets/img/upload/cc/'.$gambar_cc) ?>" alt="img" width="30%" class="img-thumbnail"><br><br>
 								<h3>Pilihan cat sesuai dengan warna :</h3>
 							</center>
 						</div>
@@ -84,7 +84,7 @@
 		        	<?php 
 		        		$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
 		        	?>
-		        	<div class="col-md-3">
+		        	<div class="col cat">
 		        		<center>
 		        			<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
 		        		</center>
