@@ -10,11 +10,6 @@ class Colorcard_model extends CI_Model{
 	public function rules(){
 		return [
 			[
-				'field' => 'nama_warna',
-				'label' => 'nama_warna',
-				'rules' => 'required'
-			],
-			[
 				'field' => 'id_barang',
 				'label' => 'id_barang',
 				'rules' => 'required'
@@ -26,6 +21,7 @@ class Colorcard_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->from($this->_table);
 		$this->db->join('barang', 'barang.id_barang = cc.id_barang', 'inner');
+		$this->db->order_by('id_cc', 'desc');
 		return $this->db->get()->result();
 	}
 
@@ -61,6 +57,20 @@ class Colorcard_model extends CI_Model{
 		return $this->db->insert($this->_table, $this);
 	}
 
+	public function saveFast(){
+		$post = $this->input->post();
+
+		for($i = 0; $i < count($_FILES['gambar']['name']); $i++){
+			$nama = $_FILES['gambar']['name'];
+			$nama = explode('.', $nama[$i]);
+			$this->nama_warna = $nama[0];
+			$this->gambar = $this->_uploadImageMultiple($i);
+			$this->id_barang = $post['id_barang'];
+			$this->db->insert($this->_table, $this);
+		}
+		return true;
+	}
+
 	public function update(){
 		$post = $this->input->post();
 		$this->nama_warna = $post['nama_warna'];
@@ -90,6 +100,30 @@ class Colorcard_model extends CI_Model{
 
 		$this->load->library('upload', $config);
 		if($this->upload->do_upload('gambar')){
+			return $this->upload->data("file_name");
+		}
+		echo $config['file_name'];
+		die();
+
+		return 'default.jpg';
+	}
+
+	private function _uploadImageMultiple($i){
+		$_FILES['file']['name'] = $_FILES['gambar']['name'][$i];
+		$_FILES['file']['type'] = $_FILES['gambar']['type'][$i];
+		$_FILES['file']['tmp_name'] = $_FILES['gambar']['tmp_name'][$i];
+		$_FILES['file']['error'] = $_FILES['gambar']['error'][$i];
+		$_FILES['file']['size'] = $_FILES['gambar']['size'][$i];
+		
+		$config['upload_path']		= './assets/img/upload/cc/';
+		$config['allowed_types']	= 'gif|jpg|png|jpeg';
+		$config['file_name']		= uniqid();
+		$config['overwrite']		= true;
+		$config['max_size']			= 1024;
+
+		$this->load->library('upload');	
+		$this->upload->initialize($config);
+		if($this->upload->do_upload('file')){
 			return $this->upload->data("file_name");
 		}
 		echo $config['file_name'];

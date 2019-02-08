@@ -29,8 +29,11 @@
           <!-- table -->
           <div class="card">
             <div class="card-header">
-              <a class="nav-link" href="<?= site_url('backend/colorcard/add') ?>">
+              <a class="" href="<?= site_url('backend/colorcard/add') ?>">
                 <i class="fas fa-fw fa-plus"></i> Insert Data
+              </a> | 
+              <a class="" href="<?= site_url('backend/colorcard/addfast') ?>">
+                <i class="fas fa-fw fa-plus"></i> Insert Data Multiple
               </a>
             </div>
             <div class="card-body">

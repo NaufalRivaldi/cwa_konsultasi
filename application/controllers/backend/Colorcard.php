@@ -33,6 +33,24 @@ class Colorcard extends CI_Controller{
 		$this->load->view('backend/cc/new_form', $data);
 	}
 
+	public function addFast(){
+		$this->auth_model->cek_session();
+
+		$color_card = $this->colorcard_model;
+		$validation = $this->form_validation;
+		$validation->set_rules($color_card->rules());
+
+		if($validation->run()){
+			$color_card->saveFast();
+			$this->session->set_flashdata('success', 'Kumpulan Data berhasil di simpan.');
+			redirect('backend/colorcard/');
+		}
+
+
+		$data['barang'] = $this->db->order_by('nm_barang', 'asc')->get('barang')->result();
+		$this->load->view('backend/cc/fast_upload', $data);
+	}
+
 	public function edit($id = null){
 		$this->auth_model->cek_session();
 
