@@ -87,7 +87,7 @@
           source:sample_data,
           limit:20,
           templates:{
-            suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="100" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nm_barang}} - {{nama_warna}}</div></div>')
+            suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="50" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nm_barang}} - {{nama_warna}}</div></div>')
           }
         });
       });
@@ -115,7 +115,7 @@
             source:sample_data,
             limit:20,
             templates:{
-              suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="100" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nm_barang}} - {{nama_warna}}</div></div>')
+              suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="50" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nm_barang}} - {{nama_warna}}</div></div>')
             }
           });
         });

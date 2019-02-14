@@ -118,29 +118,39 @@
 						</div>
 					</div>
 	        <div class="row justify-content-md-center">
-						<?php if(!empty($barang_lain)): ?>
+						<?php 
+							$cek = 0;
+							if(!empty($barang_lain)): 
+						?>
 							<?php foreach ($barang_lain as $key => $data): ?>
 								<?php 
 									$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
 									if(!empty($a)):
 										if($a->kd_kategori == $kd_kategori):
 											$kategori = $this->db->get_where('kat_barang', ['kd_kategori' => $kd_kategori])->row();
+											if(!empty($kategori)){
+												$cek = 1;
+											}
 								?>
-								<div class="col cat">
-									<center>
-										<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
-									</center>
-									<p class="text-center">
-										<b><?= $a->nm_barang ?></b><br>
-										<?= $data->nm_barang ?><br>
-										Kategori : <?= $kategori->desk_kategori ?><br>
-										<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
-										Harga : Rp. <?= number_format($data->harga) ?>
-									</p>
-								</div>
-								<?php endif; ?>
-								<?php endif; ?>
+												<div class="col cat">
+													<center>
+														<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
+													</center>
+													<p class="text-center">
+														<b><?= $a->nm_barang ?></b><br>
+														<?= $data->nm_barang ?><br>
+														Kategori : <?= $kategori->desk_kategori ?><br>
+														<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
+														Harga : Rp. <?= number_format($data->harga) ?>
+													</p>
+												</div>
+										<?php endif; ?>
+									<?php endif; ?>
 							<?php endforeach ?>
+
+							<?php if($cek == 0): ?>
+								<p>Barang tidak tersedia.</p>
+							<?php endif ?>
 						<?php else: ?>
 							<p>Barang tidak tersedia.</p>
 						<?php endif ?>

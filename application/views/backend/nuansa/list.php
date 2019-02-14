@@ -64,13 +64,17 @@
                             <?php foreach ($warna as $key => $value): ?>
                               <div class="row">
                                 <div class="col">
-                                  <img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="60px" class="img-thumbnail">
+                                  <img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="60px" class="img-thumbnail" style="float:right">
                                 </div>
                                 <div class="col">
                                   <?= $value->nama_warna ?>
                                 </div>
                               </div>
                             <?php endforeach ?>
+                            <br>
+                            <a href="<?= site_url('backend/nuansa/reset/'.$data->id_nuansa) ?>" class="btn btn-warning btn-sm">
+                              Reset Warna
+                            </a>
 
                           <?php else: ?>
                             <a href="<?= site_url('backend/nuansa/setColor/'.$data->id_nuansa) ?>" class="btn btn-primary btn-sm">

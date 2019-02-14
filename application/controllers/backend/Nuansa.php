@@ -81,7 +81,19 @@ class Nuansa extends CI_Controller {
 		$this->nuansa_model->_deleteImage($id);
 
 		if($this->nuansa_model->delete($id)){
+			$this->warna_model->delete($id);
 			$this->session->set_flashdata('success', 'Data telah dihapus.');
+			redirect('backend/nuansa');
+		}
+	}
+
+	public function reset($id){
+		$this->auth_model->cek_session();
+		
+		if(!isset($id)) show_404();
+
+		if($this->warna_model->delete($id)){
+			$this->session->set_flashdata('success', 'Warna telah di reset.');
 			redirect('backend/nuansa');
 		}
 	}
