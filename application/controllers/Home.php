@@ -22,6 +22,7 @@ class Home extends CI_Controller {
 			if(!empty($id)){
 				$cc = $this->db->get_where('cc', ['id_cc' => $id])->row();
 				$data['barang'] = $this->barang_model->raw($cc->nama_warna, $kd_merk);
+				$data['barang_lain'] = $this->barang_model->rawOther($cc->nama_warna, $kd_merk);
 				$data['gambar_cc'] = $cc->gambar;
 			}
 			$data['id'] = $id;

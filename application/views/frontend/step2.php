@@ -70,6 +70,7 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
+				<!-- sesuai warna -->
 					<div class="row">
 						<div class="col-md-12">
 							<center>
@@ -80,22 +81,69 @@
 						</div>
 					</div>
 	        <div class="row justify-content-md-center">
-	        	<?php foreach ($barang as $key => $data): ?>
-		        	<?php 
-		        		$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
-		        	?>
-		        	<div class="col cat">
-		        		<center>
-		        			<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
-		        		</center>
-		        		<p class="text-center">
-		        			<b><?= $a->nm_barang ?></b><br>
-		        			<?= $data->nm_barang ?><br>
-									<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
-		        			Harga : Rp. <?= number_format($data->harga) ?>
-		        		</p>
-		        	</div>
-		        <?php endforeach ?>
+						<?php 
+							$kd_kategori = '';
+							if(!empty($barang)): 
+						?>
+							<?php foreach ($barang as $key => $data): ?>
+								<?php 
+									$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
+									$kd_kategori = $a->kd_kategori;
+									$kategori = $this->db->get_where('kat_barang', ['kd_kategori' => $kd_kategori])->row();
+								?>
+								<div class="col cat">
+									<center>
+										<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
+									</center>
+									<p class="text-center">
+										<b><?= $a->nm_barang ?></b><br>
+										<?= $data->nm_barang ?><br>
+										Kategori : <?= $kategori->desk_kategori ?><br>
+										<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
+										Harga : Rp. <?= number_format($data->harga) ?>
+									</p>
+								</div>
+							<?php endforeach ?>
+						<?php else: ?>
+							<p>Barang tidak tersedia.</p>
+						<?php endif ?>
+	        </div>
+
+					<!-- sesuai -->
+					<div class="row">
+						<div class="col-md-12">
+							<center>
+								<h3>Pilihan cat merk lain :</h3>
+							</center>
+						</div>
+					</div>
+	        <div class="row justify-content-md-center">
+						<?php if(!empty($barang_lain)): ?>
+							<?php foreach ($barang_lain as $key => $data): ?>
+								<?php 
+									$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
+									if(!empty($a)):
+										if($a->kd_kategori == $kd_kategori):
+											$kategori = $this->db->get_where('kat_barang', ['kd_kategori' => $kd_kategori])->row();
+								?>
+								<div class="col cat">
+									<center>
+										<img src="https://www.cwabali.com/upload/produk/<?= $a->foto ?>" width="100%" class="img-thumbnail">
+									</center>
+									<p class="text-center">
+										<b><?= $a->nm_barang ?></b><br>
+										<?= $data->nm_barang ?><br>
+										Kategori : <?= $kategori->desk_kategori ?><br>
+										<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
+										Harga : Rp. <?= number_format($data->harga) ?>
+									</p>
+								</div>
+								<?php endif; ?>
+								<?php endif; ?>
+							<?php endforeach ?>
+						<?php else: ?>
+							<p>Barang tidak tersedia.</p>
+						<?php endif ?>
 	        </div>
 	      </div>
 	    </div>

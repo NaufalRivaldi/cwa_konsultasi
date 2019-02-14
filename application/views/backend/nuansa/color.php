@@ -85,7 +85,7 @@
           name: 'nama_warna',
           displayKey: function(item){return item.nm_barang+'-'+item.nama_warna},
           source:sample_data,
-          limit:10,
+          limit:20,
           templates:{
             suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="100" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nm_barang}} - {{nama_warna}}</div></div>')
           }
@@ -113,7 +113,7 @@
             name: 'nama_warna',
             displayKey: function(item){return item.nm_barang+'-'+item.nama_warna},
             source:sample_data,
-            limit:10,
+            limit:20,
             templates:{
               suggestion:Handlebars.compile('<div class="row"><div class="col-xs-3" style="padding-right:5px; padding-left:5px;"><img src="<?php echo base_url(); ?>assets/img/upload/cc/{{gambar}}" class="img" width="100" /></div><div class="col-xs-9" style="padding-right:5px; line-height:250%; padding-left:5px;">{{nm_barang}} - {{nama_warna}}</div></div>')
             }
