@@ -16,42 +16,50 @@
 				<div class="row">
 					<div class="col-md-3">
 						<h3>Nuansa</h3>
-						<div class="list-group">
+						<!-- <div class="list-group">
 							<?php $i=1; foreach ($nuansa as $key => $value): ?>
 								<a data-toggle="collapse" href="#collapseExample<?= $i;  ?>" aria-expanded="false" aria-controls="collapseExample<?= $i++;  ?>" class="list-group-item list-group-item-action">
 									<?= $value->nama_nuansa ?>
 								</a>
 							<?php endforeach ?>
+						</div> -->
+
+						<div class="list-group" id="list-tab" role="tablist">
+							<?php $i=1; foreach ($nuansa as $key => $value): ?>
+								<a class="list-group-item list-group-item-action" id="list-page<?= $i;  ?>-list" data-toggle="list" href="#list-page<?= $i++;  ?>" role="tab" aria-controls="home"><?= $value->nama_nuansa ?></a>
+							<?php endforeach ?>
 						</div>
 					</div>
 					<div class="col-md-9">
 						<h3>Tampilan Warna</h3>
-						<?php $i=1; foreach ($nuansa as $key => $data): ?>
-							<div class="collapse" id="collapseExample<?= $i;  ?>">
-							  <div class="card card-body">
-							    <img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" width="90%">
-							    <!-- warna -->
-							    <?php 
-							    	$this->db->select('*');
-				                    $this->db->from('warna');
-														$this->db->join('cc', 'warna.id_cc = cc.id_cc', 'inner');
-														$this->db->join('barang', 'cc.id_barang = barang.id_barang', 'inner');
-														$warna = $this->db->where(['warna.id_nuansa' => $data->id_nuansa])->get()->result();
-							    ?>
-							    <!-- warna -->
-							    <p>Rekomendasi Warna Nuansa: </p>
-							    <div class="row">
-							    	<?php foreach ($warna as $key => $value): ?>
-												<div class="col cc">
-													<a href="<?= site_url('home/konsultasi/'.$pilih.'/'.$value->id_cc.'/'.$value->kd_merk.'/'.$i) ?>">
-														<img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="100%" class="img-thumbnail">
-													</a>
-												</div>
-										<?php endforeach ?>
-							    </div>
-							  </div>
-							</div>
-						<?php $i++; endforeach ?>
+						<div class="tab-content" id="nav-tabContent">
+							<?php $i=1; foreach ($nuansa as $key => $data): ?>
+								<div class="tab-pane fade" id="list-page<?= $i;  ?>" role="tabpanel" aria-labelledby="list-page<?= $i;  ?>-list">
+									<div class="card card-body">
+											<img src="<?= base_url('assets/img/upload/'.$data->gambar) ?>" width="90%">
+											<!-- warna -->
+											<?php 
+												$this->db->select('*');
+																$this->db->from('warna');
+																$this->db->join('cc', 'warna.id_cc = cc.id_cc', 'inner');
+																$this->db->join('barang', 'cc.id_barang = barang.id_barang', 'inner');
+																$warna = $this->db->where(['warna.id_nuansa' => $data->id_nuansa])->get()->result();
+											?>
+											<!-- warna -->
+											<p>Rekomendasi Warna Nuansa: </p>
+											<div class="row">
+												<?php foreach ($warna as $key => $value): ?>
+														<div class="col cc">
+															<a href="<?= site_url('home/konsultasi/'.$pilih.'/'.$value->id_cc.'/'.$value->kd_merk.'/'.$i) ?>">
+																<img src="<?= base_url('assets/img/upload/cc/'.$value->gambar) ?>" alt="img" width="100%" class="img-thumbnail">
+															</a>
+														</div>
+												<?php endforeach ?>
+											</div>
+										</div>
+								</div>
+							<?php $i++; endforeach ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -83,12 +91,14 @@
 	        <div class="row justify-content-md-center">
 						<?php 
 							$kd_kategori = '';
+							$kd_jenis = '';
 							if(!empty($barang)): 
 						?>
 							<?php foreach ($barang as $key => $data): ?>
 								<?php 
 									$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
 									$kd_kategori = $a->kd_kategori;
+									$kd_jenis = $a->kd_jenis;
 									$kategori = $this->db->get_where('kat_barang', ['kd_kategori' => $kd_kategori])->row();
 								?>
 								<div class="col cat">
@@ -108,8 +118,9 @@
 							<p>Barang tidak tersedia.</p>
 						<?php endif ?>
 	        </div>
-
+					
 					<!-- sesuai -->
+					<hr>
 					<div class="row">
 						<div class="col-md-12">
 							<center>
@@ -126,7 +137,7 @@
 								<?php 
 									$a = $this->db->get_where('barang', ['kd_merk' => $data->kd_merk])->row();
 									if(!empty($a)):
-										if($a->kd_kategori == $kd_kategori):
+										if($a->kd_kategori == $kd_kategori && $a->kd_jenis == $kd_jenis):
 											$kategori = $this->db->get_where('kat_barang', ['kd_kategori' => $kd_kategori])->row();
 											if(!empty($kategori)){
 												$cek = 1;
