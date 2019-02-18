@@ -72,7 +72,7 @@
 		echo "
 		<script>
 			$('#exampleModal').modal('show');
-			$('#collapseExample".$collapse."').collapse('show');
+			$('.page".$collapse."').tab('show');
 		</script>
 		";
 	}

@@ -16,17 +16,9 @@
 				<div class="row">
 					<div class="col-md-3">
 						<h3>Nuansa</h3>
-						<!-- <div class="list-group">
-							<?php $i=1; foreach ($nuansa as $key => $value): ?>
-								<a data-toggle="collapse" href="#collapseExample<?= $i;  ?>" aria-expanded="false" aria-controls="collapseExample<?= $i++;  ?>" class="list-group-item list-group-item-action">
-									<?= $value->nama_nuansa ?>
-								</a>
-							<?php endforeach ?>
-						</div> -->
-
 						<div class="list-group" id="list-tab" role="tablist">
 							<?php $i=1; foreach ($nuansa as $key => $value): ?>
-								<a class="list-group-item list-group-item-action" id="list-page<?= $i;  ?>-list" data-toggle="list" href="#list-page<?= $i++;  ?>" role="tab" aria-controls="home"><?= $value->nama_nuansa ?></a>
+								<a class="list-group-item list-group-item-action page<?= $i;  ?>" id="list-page<?= $i;  ?>-list" data-toggle="list" href="#list-page<?= $i++;  ?>" role="tab" aria-controls="home"><?= $value->nama_nuansa ?></a>
 							<?php endforeach ?>
 						</div>
 					</div>
@@ -109,13 +101,15 @@
 										<b><?= $a->nm_barang ?></b><br>
 										<?= $data->nm_barang ?><br>
 										Kategori : <?= $kategori->desk_kategori ?><br>
-										<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
 										Harga : Rp. <?= number_format($data->harga) ?>
 									</p>
 								</div>
 							<?php endforeach ?>
 						<?php else: ?>
-							<p>Barang tidak tersedia.</p>
+							<center>
+								<img src="<?= base_url('assets/img/mixing.png') ?>" alt="mixing" width="30%">
+								<p>Warna mixing.</p>
+							</center>
 						<?php endif ?>
 	        </div>
 					
@@ -151,7 +145,6 @@
 														<b><?= $a->nm_barang ?></b><br>
 														<?= $data->nm_barang ?><br>
 														Kategori : <?= $kategori->desk_kategori ?><br>
-														<span class="badge badge-warning">Stock : <?= $data->jumlah ?> Pcs</span><br>
 														Harga : Rp. <?= number_format($data->harga) ?>
 													</p>
 												</div>
