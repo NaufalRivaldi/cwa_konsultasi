@@ -28,7 +28,7 @@ class Nuansa_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from($this->_table);
 		$this->db->join('jenis', 'jenis.kd_jenis = nuansa.kd_jenis', 'inner');
-		$this->db->order_by('jenis.nm_jenis', 'asc');
+		$this->db->order_by('nuansa.id_nuansa', 'DESC');
 		return $this->db->get()->result();
 	}
 
@@ -38,7 +38,7 @@ class Nuansa_model extends CI_Model {
 
 	public function viewNuansa($key){
 		$kd_jenis = $this->changeId($key);
-		return $this->db->get_where($this->_table, ['kd_jenis' => $kd_jenis])->result();
+		return $this->db->order_by('nama_nuansa', 'ASC')->get_where($this->_table, ['kd_jenis' => $kd_jenis])->result();
 	}
 
 	public function changeId($data){
